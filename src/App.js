@@ -5,11 +5,10 @@ import { FaStepBackward, FaStepForward, FaPlay, FaPause, FaRandom, FaRedo } from
 
 function App() {
   const [tracks, setTracks] = useState([]);
-  const [folders] = useState(['mp3-tracks-1']); // Use a single folder or your actual folders
+  const [folders] = useState(['mp3-tracks-1']);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
@@ -17,9 +16,19 @@ function App() {
     const now = new Date();
     return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [volume, setVolume] = useState(0.7);
   const audioRef = useRef(null);
+
+  const handleNext = useCallback(() => {
+    if (shuffle) {
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * tracks.length);
+      } while (nextIndex === currentTrackIndex && tracks.length > 1);
+      setCurrentTrackIndex(nextIndex);
+    } else {
+      setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
+    }
+  }, [shuffle, tracks, currentTrackIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,20 +42,19 @@ function App() {
   useEffect(() => {
     const fetchTracks = async () => {
       try {
-        setIsLoading(true);
         const allTracks = [];
         for (const folder of folders) {
           const folderTracks = [
             {
-              id: `${folder}/track1`,
-              title: `h2o bottle flip`,
-              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950768/%EF%BC%B6%EF%BC%A9%EF%BC%B2%EF%BC%A9%EF%BC%AE%EF%BC%A7_pprtgf.mp3`,
-              duration: 3600
-            },
-            {
               id: `${folder}/track2`,
               title: `jazzyWazzler`,
               url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950670/Smooth_beats_that_are_just_a_vibe___chill_playlist_wgjcrp.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track1`,
+              title: `h2o bottle flip`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950768/%EF%BC%B6%EF%BC%A9%EF%BC%A2%EF%BC%A9%EF%BC%AE%EF%BC%A7_pprtgf.mp3`,
               duration: 3600
             },
             {
@@ -65,10 +73,8 @@ function App() {
           allTracks.push(...folderTracks);
         }
         setTracks(allTracks);
-        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching tracks:', error);
-        setIsLoading(false);
       }
     };
 
@@ -84,10 +90,6 @@ function App() {
       setCurrentTime(audio.currentTime);
     };
 
-    const handleLoadedMetadata = () => {
-      setDuration(audio.duration);
-    };
-
     const handleEnded = () => {
       if (repeat) {
         audio.currentTime = 0;
@@ -98,15 +100,13 @@ function App() {
     };
 
     audio.addEventListener('timeupdate', handleTimeUpdate);
-    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('ended', handleEnded);
 
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
-      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, [repeat]);
+  }, [repeat, handleNext]);
 
   // Load and play track when currentTrackIndex changes
   useEffect(() => {
@@ -119,13 +119,6 @@ function App() {
       audio.play().catch(err => console.error('Playback failed:', err));
     }
   }, [currentTrackIndex, tracks, isPlaying]);
-
-  // Update audio volume when volume state changes
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
-    }
-  }, [volume]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -149,31 +142,6 @@ function App() {
         return prevIndex - 1;
       });
     }
-  };
-
-  const handleNext = useCallback(() => {
-    if (shuffle) {
-      let nextIndex;
-      do {
-        nextIndex = Math.floor(Math.random() * tracks.length);
-      } while (nextIndex === currentTrackIndex && tracks.length > 1);
-      setCurrentTrackIndex(nextIndex);
-    } else {
-      setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
-    }
-  }, [shuffle, tracks, currentTrackIndex]);
-
-  const handleProgressChange = (e) => {
-    const newTime = parseFloat(e.target.value);
-    setCurrentTime(newTime);
-    audioRef.current.currentTime = newTime;
-  };
-
-  const formatTime = (timeInSeconds) => {
-    const hours = Math.floor(timeInSeconds / 3600);
-    const minutes = Math.floor((timeInSeconds % 3600) / 60);
-    const seconds = Math.floor(timeInSeconds % 60);
-    return `${hours > 0 ? `${hours}:` : ''}${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
   const currentTrack = tracks[currentTrackIndex];
