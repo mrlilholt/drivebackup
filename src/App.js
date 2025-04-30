@@ -68,7 +68,121 @@ function App() {
               title: `pianoJazzo`,
               url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950430/%EF%BC%B7%EF%BC%A9%EF%BC%AE%EF%BC%B4%EF%BC%A5%EF%BC%B2_%EF%BC%A3%EF%BC%A8%EF%BC%A9%EF%BC%AC%EF%BC%AC_-_1_HOUR_tqakpz.mp3`,
               duration: 3600
-            }
+            },
+            {
+              id: `${folder}/track4`,
+              title: `Yiptize`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950322/%EF%BC%A1%EF%BC%B5%EF%BC%B4%EF%BC%B5%EF%BC%AD%EF%BC%AE_%EF%BC%A3%EF%BC%A8%EF%BC%A9%EF%BC%AC%EF%BC%AC_-_1_HOUR_yptze2.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `studySession`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950210/1_A.M_Study_Session_lofi_hip_hop_4_1_qnjoa2.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `WarmDays`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950044/lofi_songs_for_warm_days_ftgstv.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `ColdDays`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950038/lofi_songs_for_cold_days_jt4rub.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `lofiHipHop`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745949575/1_A.M_Study_Session_lofi_hip_hop_4_xtnruj.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `estasTonne`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1743707350/Estas_Tonne_-_Old_Style_Full_Album_4_toccic.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `seasideJapaneseCafe`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1743703901/Seaside_Lofi_in_a_Japanese_Cafe%CC%81_Relaxing_Lo_Fi_Beats_with_Ocean_Breeze_Ambience_Cozy_Lofi_Music_4_fcgfzb.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `DeepFocus`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1743697560/Chill_Lofi_Beats_chill_lo-fi_hip_hop_beats_Lofi_Deep_Focus_Work_Study__Reading_4_mzmzts.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `PeacefulSunrise`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1743692358/Peaceful_Sunrise_Piano_Guitar_for_Relaxation_4_uxy49x.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `PositiveVibes`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1743689886/WORK_MUSIC_-_Ambient_Tunes_for_Focused_Energy_Productivity_4_att2pt.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `CalmVibes`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1740790841/1_hour_of_aesthetic_calm_lofi_music_chill_4_p5mjqn.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `relazingCat`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1740790674/1_Hour_Lofi_Cat_Relax_with_my_cat_-_Sleep_Relax_Study_Chill_4_qqgaut.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `justWannaStay`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1739498833/Just_wanna_stay_here_forever_lofi_hip_hop_mix_4_waxyif.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `eizdong`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1739497734/Seoul_City_View_-_chill___lofi_hiphop_beats_to_sleep_relax_study_to___%E1%84%85%E1%85%A9%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5_%E1%84%89%E1%85%A5%E1%84%8B%E1%85%AE%E1%86%AF_%E1%84%89%E1%85%B5%E1%84%90%E1%85%B5_%E1%84%8B%E1%85%A3%E1%84%80%E1%85%A7%E1%86%BC_%E1%84%80%E1%85%A1%E1%86%B7%E1%84%89%E1%85%A1%E1%86%BC_%E1%84%82%E1%85%A6%E1%84%8B%E1%85%A9%E1%86%AB%E1%84%89%E1%85%B5%E1%84%90%E1%85%B5_4_eizdpn.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `trueHipHop`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1739497605/Scratches_Jazz_Boom_Bap__A_True_Hip-Hop_Experience_4_pj5awd.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `comfortZone`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1739497428/comfort_zone._4_mvgogu.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `snowingInTokyo`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1739496827/SNOWING_IN_%EF%BC%AF%EF%BC%B3%EF%BC%A1%EF%BC%AB%EF%BC%A1_Lofi_Hip_Hop_4_dwjuaw.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `chillWorkMusic`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1739496795/Chill_Work_Music_chill_lo-fi_hip_hop_beats_4_soqp92.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `hipHopMix`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1739496721/Lofi_Beats_Mix_chill_lo-fi_hip_hop_beats_4_jvhske.mp3`,
+              duration: 3600
+            },
           ];
           allTracks.push(...folderTracks);
         }
