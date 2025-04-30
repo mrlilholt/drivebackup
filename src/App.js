@@ -2,24 +2,23 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 import { FaStepBackward, FaStepForward, FaPlay, FaPause, FaRandom, FaRedo } from 'react-icons/fa';
-import { getTracksFromFolder } from './services/cloudinary';
 
 function App() {
   const [tracks, setTracks] = useState([]);
-  const [folders, setFolders] = useState(['mp3-tracks-1', 'mp3-tracks-2', 'mp3-tracks-3']);
+  const [folders] = useState(['mp3-tracks-1']); // Use a single folder or your actual folders
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.7);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [showAbout, setShowAbout] = useState(false);
   const [clock, setClock] = useState(() => {
     const now = new Date();
     return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [volume, setVolume] = useState(0.7);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -35,15 +34,13 @@ function App() {
     const fetchTracks = async () => {
       try {
         setIsLoading(true);
-        
         const allTracks = [];
-        
         for (const folder of folders) {
           const folderTracks = [
             {
               id: `${folder}/track1`,
               title: `h2o bottle flip`,
-              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950768/%EF%BC%B6%EF%BC%A9%EF%BC%A2%EF%BC%A9%EF%BC%AE%EF%BC%A7_pprtgf.mp3`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950768/%EF%BC%B6%EF%BC%A9%EF%BC%B2%EF%BC%A9%EF%BC%AE%EF%BC%A7_pprtgf.mp3`,
               duration: 3600
             },
             {
@@ -54,15 +51,19 @@ function App() {
             },
             {
               id: `${folder}/track3`,
-              title: `pianoJazzo`,
+              title: `theDrivin`,
               url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950529/%EF%BC%A3%EF%BC%A8%EF%BC%A9%EF%BC%AC%EF%BC%AC_%EF%BC%B2%EF%BC%A9%EF%BC%A4%EF%BC%A5_-_1_HOUR_tut27d.mp3`,
+              duration: 3600
+            },
+            {
+              id: `${folder}/track4`,
+              title: `pianoJazzo`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950430/%EF%BC%B7%EF%BC%A9%EF%BC%AE%EF%BC%B4%EF%BC%A5%EF%BC%B2_%EF%BC%A3%EF%BC%A8%EF%BC%A9%EF%BC%AC%EF%BC%AC_-_1_HOUR_tqakpz.mp3`,
               duration: 3600
             }
           ];
-          
           allTracks.push(...folderTracks);
         }
-        
         setTracks(allTracks);
         setIsLoading(false);
       } catch (error) {
@@ -110,13 +111,10 @@ function App() {
   // Load and play track when currentTrackIndex changes
   useEffect(() => {
     if (tracks.length === 0) return;
-    
     const audio = audioRef.current;
     if (!audio) return;
-
     audio.src = tracks[currentTrackIndex].url;
     audio.load();
-    
     if (isPlaying) {
       audio.play().catch(err => console.error('Playback failed:', err));
     }
@@ -132,7 +130,6 @@ function App() {
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
-
     if (isPlaying) {
       audio.pause();
     } else {
@@ -176,7 +173,6 @@ function App() {
     const hours = Math.floor(timeInSeconds / 3600);
     const minutes = Math.floor((timeInSeconds % 3600) / 60);
     const seconds = Math.floor(timeInSeconds % 60);
-    
     return `${hours > 0 ? `${hours}:` : ''}${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
@@ -184,10 +180,10 @@ function App() {
 
   return (
     <div className="neumorph-app">
-      {/* Add the audio element here */}
       <audio ref={audioRef} />
       <header className="neumorph-header">
-      <span className="icon clock-icon" title="Current time">{clock}</span>        <div className="radio-title-img-wrapper">
+        <span className="icon clock-icon" title="Current time">{clock}</span>
+        <div className="radio-title-img-wrapper">
           <img
             src="/radioTitle.png"
             alt="Radio Title"
@@ -229,7 +225,6 @@ function App() {
             setShuffle((prev) => {
               const newVal = !prev;
               if (newVal) {
-                // Shuffle turned ON: pick a random track and play
                 let nextIndex = currentTrackIndex;
                 if (tracks.length > 1) {
                   while (nextIndex === currentTrackIndex) {
