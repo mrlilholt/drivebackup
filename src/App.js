@@ -183,6 +183,12 @@ function App() {
               url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1739496721/Lofi_Beats_Mix_chill_lo-fi_hip_hop_beats_4_jvhske.mp3`,
               duration: 3600
             },
+            {
+              id: `${folder}/track4`,
+              title: `on the road`,
+              url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1743705255/On_the_Road_Again_-_Groove_Monkey_-_4_jhb4a2.mp3`,
+              duration: 3600
+            }
           ];
           allTracks.push(...folderTracks);
         }
