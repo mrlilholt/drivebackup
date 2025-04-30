@@ -18,6 +18,8 @@ function App() {
   });
   const audioRef = useRef(null);
 
+  const currentTrack = tracks[currentTrackIndex]; // <-- Move this up!
+
   const handleNext = useCallback(() => {
     if (shuffle) {
       let nextIndex;
@@ -247,7 +249,7 @@ function App() {
         artist: currentTrack.artist || 'Amazing Music',
         album: 'Lilholt Driving Tunes',
         artwork: [
-          { src: '/drivin.png', sizes: '512x512', type: 'image/png' }
+          { src: '/radioTitle.png', sizes: '512x512', type: 'image/png' }
         ]
       });
     }
@@ -276,8 +278,6 @@ function App() {
       });
     }
   };
-
-  const currentTrack = tracks[currentTrackIndex];
 
   return (
     <div className="neumorph-app">
