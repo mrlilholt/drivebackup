@@ -240,6 +240,19 @@ function App() {
     }
   }, [currentTrackIndex, tracks, isPlaying]);
 
+  useEffect(() => {
+    if ('mediaSession' in navigator && currentTrack) {
+      navigator.mediaSession.metadata = new window.MediaMetadata({
+        title: currentTrack.title,
+        artist: currentTrack.artist || 'Amazing Music',
+        album: 'Lilholt Driving Tunes',
+        artwork: [
+          { src: '/drivin.png', sizes: '512x512', type: 'image/png' }
+        ]
+      });
+    }
+  }, [currentTrack]);
+
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
