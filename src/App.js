@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 import { FaStepBackward, FaStepForward, FaPlay, FaPause, FaRandom, FaRedo } from 'react-icons/fa';
 import { getTracksFromFolder } from './services/cloudinary';
@@ -54,7 +54,7 @@ function App() {
             },
             {
               id: `${folder}/track3`,
-              title: `Track 3 (${folder})`,
+              title: `pianoJazzo`,
               url: `https://res.cloudinary.com/dtvecsd0q/video/upload/v1745950529/%EF%BC%A3%EF%BC%A8%EF%BC%A9%EF%BC%AC%EF%BC%AC_%EF%BC%B2%EF%BC%A9%EF%BC%A4%EF%BC%A5_-_1_HOUR_tut27d.mp3`,
               duration: 3600
             }
@@ -154,7 +154,7 @@ function App() {
     }
   };
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (shuffle) {
       let nextIndex;
       do {
@@ -164,7 +164,7 @@ function App() {
     } else {
       setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
     }
-  };
+  }, [shuffle, tracks, currentTrackIndex]);
 
   const handleProgressChange = (e) => {
     const newTime = parseFloat(e.target.value);
