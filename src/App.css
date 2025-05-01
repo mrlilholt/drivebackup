@@ -396,7 +396,9 @@ audio {
   align-items: center;
   color: #b2b8c6;
   font-size: 1.1rem;
-  margin-bottom: 8px;
+  margin-bottom: 8px;         /* Reduce bottom margin */
+  min-height: 0;              /* Remove min-height */
+  padding-top: 0;             /* Ensure no extra top padding */
 }
 
 .icon {
@@ -499,90 +501,6 @@ audio {
 .neumorph-icon.active {
   color: #5ee7df;
   filter: drop-shadow(0 0 6px #5ee7dfcc);
-}
-
-/* Fullscreen dark background, center content */
-.app-bg {
-  min-height: 100vh;
-  min-width: 100vw;
-  background: #23262b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Card container for the player */
-.player-card {
-  background: #292c31;
-  border-radius: 32px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-  padding: 32px 24px;
-  max-width: 400px;
-  width: 90vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Make sure the header and controls are centered inside the card */
-.neumorph-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #b2b8c6;
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-}
-
-.radio-title-img-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.clock-icon {
-  margin-right: auto;
-}
-
-/* Center the spinning circle and image */
-.neumorph-circle-outer,
-.neumorph-circle-inner {
-  width: 220px;
-  height: 220px;
-  max-width: 60vw;
-  max-height: 60vw;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.neumorph-circle-inner {
-  width: 90%;
-  height: 90%;
-}
-
-.drivin-img {
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
-}
-
-/* Responsive for mobile */
-@media (max-width: 500px) {
-  .player-card {
-    padding: 16px 4px;
-    max-width: 98vw;
-  }
-  .neumorph-circle-outer,
-  .neumorph-circle-inner {
-    width: 60vw;
-    height: 60vw;
-    max-width: 98vw;
-    max-height: 98vw;
-  }
 }
 
 /* Responsive adjustments */
