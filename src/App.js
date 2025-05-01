@@ -276,7 +276,7 @@ function App() {
         }
         return prevIndex - 1;
       });
-    }
+    }   
   };
 
   return (
